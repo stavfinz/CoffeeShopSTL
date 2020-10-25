@@ -52,7 +52,7 @@ Product::Product(const string& name, int calories, double cost, double price) : 
 
 //Product:: ~Product()
 //{
-//	delete[] name;
+//	//delete[] name;
 //}
 
 void Product::setName(const string& name)

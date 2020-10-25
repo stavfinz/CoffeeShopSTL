@@ -238,8 +238,8 @@ const Product* chooseProductByType(CoffeeShop& shop, const type_info& productTyp
 
 	for (; it != end; ++it, i++)
 	{
-		if (typeid(*products[i]) == productType)
-			cout << i << ". " << *products[i] << endl;
+		if (typeid(**it) == productType)
+			cout << i << ". " << **it << endl;
 	}
 
 	while (true)

@@ -23,7 +23,7 @@ public:
 	Person(const string& name, const string& phoneNumber) noexcept(false);
 
 	// dtor
-	virtual ~Person();
+	virtual ~Person() = default;
 
 	// operators
 	virtual bool operator==(const Person& other) const;

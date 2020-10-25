@@ -63,6 +63,13 @@ CoffeeShop::CoffeeShop(CoffeeShop&& other) : name(std::move(other.name)), addres
 // dtor
 CoffeeShop::~CoffeeShop()
 {
+	vector<Shift*>::iterator it_shifts = shifts.begin();
+	vector<Shift*>::iterator end_shifts = shifts.end();
+	for (; it_shifts != end_shifts; ++it_shifts)
+	{
+		delete* it_shifts;
+	}
+
 	vector<Customer*>::iterator it_cust = customers.begin();
 	vector<Customer*>::iterator end_cust = customers.end();
 	for (; it_cust != end_cust; ++it_cust)
@@ -82,14 +89,6 @@ CoffeeShop::~CoffeeShop()
 	for (; it_prod != end_prod; ++it_prod)
 	{
 		delete* it_prod;
-		
-	}
-
-	vector<Shift*>::iterator it_shifts = shifts.begin();
-	vector<Shift*>::iterator end_shifts = shifts.end();
-	for (; it_shifts != end_shifts; ++it_shifts)
-	{
-		delete* it_shifts;
 	}
 }
 

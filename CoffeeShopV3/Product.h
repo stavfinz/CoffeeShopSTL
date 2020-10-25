@@ -21,7 +21,7 @@ public:
 	// move assignment operator
 	//virtual const Product& operator=(Product&& other);
 	// dtor
-	//virtual ~Product();
+	virtual ~Product() = default;
 
 	// operators
 	bool operator==(const Product& other) const;

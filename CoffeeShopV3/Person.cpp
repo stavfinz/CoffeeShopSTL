@@ -22,11 +22,11 @@ Person::Person(const string& name, const string& phoneNumber) : name(""), phoneN
 //}
 
 // dtor
-Person::~Person()
-{
-	/*delete[] this->name;
-	delete[] this->phoneNumber;*/
-}
+//Person::~Person()
+//{
+//	/*delete[] this->name;
+//	delete[] this->phoneNumber;*/
+//}
 
 //const Person& Person::operator=(const Person& other)
 //{
