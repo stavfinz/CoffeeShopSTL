@@ -13,29 +13,32 @@ class LinkedList
     int size;
 
 private:
-    LinkedList(LinkedList&& other) = delete;
+
     LinkedList& operator=(const LinkedList& other) = delete;
     LinkedList& operator=(LinkedList&& other) = delete;
+    LinkedList(const LinkedList& other) = delete;
 
 public:
     LinkedList();
-    LinkedList(const LinkedList& other);
+    LinkedList(LinkedList&& other);
+
     ~LinkedList();
 
-    //Method adds info to the end of the list
-    void add(T info);
-    bool remove(Node<T>& node);
+    bool add(T data);       //  adds to the end of the list
+    bool remove(T data);
     int getSize() const { return size; }
     bool isExists(const T& data) const;
-    const Node* getHead() const { return *this->head; }
+    const Node<T>* getHead() const { return this->head; }
+    T operator[](int index) const;
 
     friend ostream& operator<<(ostream& os, const LinkedList& list)
     {
         const Node<T>* ptr = list.getHead();
-
+        int counter = 1;
         while (ptr != NULL)
         {
-            os << "\t" << *ptr;
+            os << "\t" << counter << ")\t" << *ptr << endl;
+            ++counter;
             ptr = ptr->getNext();
         }
         return os;
@@ -49,7 +52,7 @@ LinkedList<T>::LinkedList()
     size = 0;
 }
 
-template <class T>
+/*template <class T>
 LinkedList<T>::LinkedList(const LinkedList& other)
 {
     if (other.head == NULL)
@@ -67,81 +70,104 @@ LinkedList<T>::LinkedList(const LinkedList& other)
         this->add(ptr->getData());
         ptr = ptr->getNext();
     }
-}
-
+}*/
 template <class T>
 LinkedList<T>::~LinkedList()
 {
-    Node<T>* ptr = head
+    Node<T>* ptr = head;
 
-        while (ptr != NULL)
-        {
-            Node<T>* temp = ptr->getNext();
-            delete ptr;
-            ptr = temp;
-        }
+    while (ptr != NULL)
+    {
+        Node<T>* temp = ptr->getNext();
+        delete ptr;
+        ptr = temp;
+    }
 }
 
 template <class T>
-void LinkedList<T>::add(T info)
+LinkedList<T>::LinkedList(LinkedList&& other) : head(nullptr), size(other.getSize())
 {
-    if (head == NULL) //if our list is currently empty
+    std::swap(this->head, other.head);
+}
+
+template <class T>
+bool LinkedList<T>::add(T data)
+{
+    if (isExists(data))
+        return false;
+    if (head == NULL)               //  if the list is currently empty
     {
-        head = new Node<T>; //Create new node of type T
-        head->setData(info);
+        head = new Node<T>(data);   // create a new node of type T at the head
     }
-    else //if not empty add to the end and move the tail
+    else                            //  if not empty add to the end
     {
-        Node<T>* temp = new Node<T>(info);
         Node<T>* ptr = head;
-        while (ptr.getNext() != NULL)
+        while (ptr->getNext() != NULL)
         {
-            ptr = ptr.getNext();
+            ptr = ptr->getNext();
         }
-        ptr.setNext(temp);
+        ptr->setNext(new Node<T>(data););
     }
     size++;
+    return true;
 }
 
 template <class T>
 bool LinkedList<T>::isExists(const T& data) const
 {
-    Node<T>& tmp = this->head();
+    Node<T>* tmp = this->head;
 
-    while (ptr != NULL)
+    while (tmp != NULL)
     {
-        if (tmp.getData() == data)
+        if (*tmp->getData() == *data)
             return true;
 
-        tmp = tmp.getNext();
+        tmp = tmp->getNext();
     }
     return false;
 }
 
 template <class T>
-bool LinkedList<T>::remove(Node<T>& node)
+bool LinkedList<T>::remove(T otherData)
 {
-    Node<T>* ptr = head;
-    if (ptr == node)
+    Node<T>* ptr = this->head;
+    if (ptr->getData() == otherData)
     {
         head = head->getNext();
-        delete node;
+        delete ptr;
         size--;
         return true;
     }
 
-    while (ptr->getNext() != node && ptr != null)
+    while (ptr->getNext() != nullptr)
     {
+        if (ptr->getNext()->getData() == otherData)
+            break;
         ptr = ptr->getNext();
     }
 
-    if (ptr == NULL)
+    if (ptr->getNext() == NULL)
         return false;
 
-    ptr->setNext(node.getNext());
-    delete node;
+    Node<T>* temp = ptr->getNext();
+    ptr->setNext(temp->getNext());
+    delete temp;
     size--;
     return true;
+}
+
+template <class T>
+T LinkedList<T>::operator[](int index) const
+{
+    int tail = 0;
+    Node<T>* tmp = this->head;
+
+    while (tail != index && tmp != NULL)
+    {
+        tmp = tmp->getNext();
+        tail++;
+    }
+    return tmp->getData();
 }
 
 #endif // !__LINKEDLIST_H__

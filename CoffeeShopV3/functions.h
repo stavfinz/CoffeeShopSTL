@@ -33,6 +33,7 @@ void openShift(CoffeeShop& shop, const Date& date);
 // 10.
 void makeOrder(CoffeeShop& shop, Shift& shift);
 
+void deleteCustomer(CoffeeShop& shop);
 void addEmployeesToShift(CoffeeShop& shop, Shift& shift);
 void addProductToDailyMenu(CoffeeShop& shop, Shift& shift);
 

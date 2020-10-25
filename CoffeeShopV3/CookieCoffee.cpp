@@ -36,7 +36,7 @@ double CookieCoffee::getCost() const
 
 //	the price of the cookie and the coffee minus the discount precentage
 double CookieCoffee::getPrice() const
-{	
+{
 	double price = Coffee::getPrice() + Cookie::getPrice();
 	price -= price * discountPercent;
 	return price;

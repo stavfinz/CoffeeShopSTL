@@ -4,7 +4,7 @@
 #include "IllegalValue.h"
 #include "utils.h"
 
-Address::Address(const string& city, const string& streetName, int streetNumber) 
+Address::Address(const string& city, const string& streetName, int streetNumber)
 {
 	setCity(city);
 	setStreetName(streetName);

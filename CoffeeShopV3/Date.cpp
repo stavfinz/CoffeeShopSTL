@@ -27,7 +27,7 @@ bool Date::operator==(const Date& d) const
 	return true;					//	otherwise, the same
 }
 
-bool Date::operator>(const Date& d) const 
+bool Date::operator>(const Date& d) const
 {
 	if (year <= d.year)				//	if less than or equal year
 		return false;

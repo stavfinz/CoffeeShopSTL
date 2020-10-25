@@ -57,7 +57,7 @@ Product::Product(const string& name, int calories, double cost, double price) : 
 
 void Product::setName(const string& name)
 {
-	int nameLen = name.size();				//	save name length because needed in more than one place
+	int nameLen = (int)name.size();				//	save name length because needed in more than one place
 	if (nameLen < 2)								//	if the name is too short
 		throw IllegalValue("Product Name should contain at least 2 characters.");
 	if (!isAlphaOnly(name))							//	if the name contains non-alphabetic characters

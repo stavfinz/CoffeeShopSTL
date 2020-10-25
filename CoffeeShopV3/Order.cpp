@@ -33,7 +33,7 @@ Order::~Order()
 const Order& Order::operator=(const Order& other)
 {
 	if (this != &other)
-	{		
+	{
 		vector<Product*>::const_iterator it = items.begin();
 		vector<Product*>::const_iterator end = items.end();
 
@@ -84,7 +84,7 @@ int Order::getTotalCalories() const
 	vector<Product*>::const_iterator end = items.end();
 
 	for (; it != end; ++it)
-		totalCalories +=  (*it)->getCalories();
+		totalCalories += (*it)->getCalories();
 
 	return totalCalories;
 }

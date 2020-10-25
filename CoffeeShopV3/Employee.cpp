@@ -42,7 +42,7 @@ bool Employee::operator<(const Employee& other) const
 	return this->getSeniority() < other.getSeniority();
 }
 
-bool Employee::operator>(const Employee& other) const 
+bool Employee::operator>(const Employee& other) const
 {
 	return this->getSeniority() > other.getSeniority();
 }
@@ -66,8 +66,8 @@ int Employee::getSeniority() const
 	Date today = getTodayDate();
 
 	int num = (today.getYear() - hireDate.getYear()) * 365 +
-			(today.getMonth() - hireDate.getMonth()) * 31 +
-			(today.getDay() - hireDate.getDay());
+		(today.getMonth() - hireDate.getMonth()) * 31 +
+		(today.getDay() - hireDate.getDay());
 
 	return num;
 }

@@ -20,10 +20,10 @@ private:
 	vector<const Employee*> employees;
 	vector<Product*> dailyMenu;
 	vector<Order*> orders;
-	
+
 public:
 	// ctor
-	Shift(double clubDiscountPercent, const Date& shiftDate); 
+	Shift(double clubDiscountPercent, const Date& shiftDate);
 	// copy ctor
 	Shift(const Shift& other) = delete;
 	// assignment operator
@@ -34,9 +34,9 @@ public:
 	~Shift();
 
 	// getters
-	int getNumEmployees() const { return employees.size(); }
-	int getDailyMenuSize() const { return dailyMenu.size(); }
-	int getNumOrders() const { return orders.size(); }
+	int getNumEmployees() const { return (int)employees.size(); }
+	int getDailyMenuSize() const { return (int)dailyMenu.size(); }
+	int getNumOrders() const { return (int)orders.size(); }
 	double getClubDiscountPercent() const { return clubDiscountPercent; }
 	const Date* getShiftDate() const { return &shiftDate; }
 	const vector<const Employee*> getEmployees() const { return employees; }

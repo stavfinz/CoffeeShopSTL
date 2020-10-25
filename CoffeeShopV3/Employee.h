@@ -13,7 +13,7 @@ private:
 
 	Employee(const Employee& other) = default;
 	Employee(Employee&& other) = default;
-	
+
 	Employee& operator=(const Employee& other) = default;
 	Employee& operator=(Employee&& other) = default;
 
@@ -21,9 +21,9 @@ public:
 	friend class CoffeeShop;
 	// ctor
 	Employee(const string& name, const string& phoneNumber, double shiftSalary, const Date& hireDate) noexcept(false);
-	
+
 	// operators
-	bool operator<(const Employee& other) const; 
+	bool operator<(const Employee& other) const;
 	bool operator>(const Employee& other) const;
 
 	// getters

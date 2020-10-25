@@ -107,7 +107,7 @@ void Shift::addOrder(const Order& order)
 
 //	iterate over the employee's array and find the one with the greatest seniority
 const Employee* Shift::getShiftManager() const
-{														
+{
 	int maxSeniorty = 0;
 	const Employee* shiftManager = nullptr;
 
@@ -115,7 +115,7 @@ const Employee* Shift::getShiftManager() const
 	vector<const Employee*>::const_iterator end = employees.end();
 
 	for (; it != end; ++it)									//	iterate over the employees array
-	{				
+	{
 		int currSeniority = (*it)->getSeniority();			//	calculate current employee's seniority
 		if (currSeniority > maxSeniorty)					//	if greater than the max -> save it, and the employee
 		{

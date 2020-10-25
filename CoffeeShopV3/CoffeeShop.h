@@ -6,6 +6,7 @@
 using namespace std;
 
 #include "Address.h"
+#include "LinkedList.h"
 class Person;
 class Customer;
 class Employee;
@@ -13,12 +14,14 @@ class Shift;
 class Product;
 class Date;
 
+
 class CoffeeShop {
 private:
 	string name;
 	Address address;
 
-	vector<Customer*> customers;
+	LinkedList<Customer*> customers;
+	//vector<Customer*> customers;
 	vector<Employee*> employees;
 	vector<Shift*> shifts;
 	vector<Product*> products;
@@ -43,12 +46,14 @@ public:
 
 	// getters
 	const string& getName() const { return name; }
-	int getNumCustomers() const { return customers.size(); }
-	int getNumEmployees() const { return employees.size(); }
-	int getNumShifts() const { return shifts.size(); }
-	int getNumProducts() const { return products.size(); }
+	int getNumCustomers() const { return customers.getSize(); }
+	int getNumEmployees() const { return (int)employees.size(); }
+	int getNumShifts() const { return (int)shifts.size(); }
+	int getNumProducts() const { return (int)products.size(); }
 	const Address* getAddress() const { return &address; }
-	const vector<Customer*> getCustomers() const { return customers; }
+	//const vector<Customer*> getCustomers() const { return customers; }
+	const LinkedList<Customer*>& getCustomers() const { return customers; }
+	LinkedList<Customer*>& getCustomers() { return customers; }
 	const vector<Employee*> getEmployees() const { return employees; }
 	const vector<Shift*> getShifts() const { return shifts; }
 	const vector<Product*> getProducts() const { return products; }
@@ -67,7 +72,7 @@ public:
 	friend ostream& operator<<(ostream& os, const CoffeeShop& coffeeShop);
 
 	bool isEmployeeExists(const Person& employee) const;
-	bool isCustomerExists(const Person& employee) const;
+	//bool isCustomerExists(const Customer& employee) const;
 	bool isProductExists(const Product& product) const;
 	bool isShiftExists(const Date& date) const;
 };

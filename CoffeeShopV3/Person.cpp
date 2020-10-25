@@ -60,7 +60,7 @@ bool Person::operator==(const Person& other) const
 
 void Person::setName(const string& name)
 {
-	if(name.size() < 2)						//	if the name is too short
+	if (name.size() < 2)						//	if the name is too short
 		throw IllegalValue("Name should be at least 2 characters.");
 	if (!isAlphaOnly(name))						//	if the name contains non-alphabetic characters
 		throw IllegalValue("Name should be characters only.");

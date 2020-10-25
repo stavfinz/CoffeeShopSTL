@@ -12,12 +12,13 @@
 const int DEFAULT_ARRAY_SIZE = 20;
 
 // ctor
-CoffeeShop::CoffeeShop(const string& name, const Address& address) : name(""), address(address)
+CoffeeShop::CoffeeShop(const string& name, const Address& address) : name(""), address(address), customers()
 {
 	setName(name);
 
-	this->customers = vector<Customer*>();
-	this->customers.reserve(DEFAULT_ARRAY_SIZE);
+
+	//this->customers = vector<Customer*>();
+	//this->customers.reserve(DEFAULT_ARRAY_SIZE);
 
 	this->employees = vector<Employee*>();
 	this->employees.reserve(DEFAULT_ARRAY_SIZE);
@@ -29,12 +30,12 @@ CoffeeShop::CoffeeShop(const string& name, const Address& address) : name(""), a
 	this->products.reserve(DEFAULT_ARRAY_SIZE);
 }
 
-CoffeeShop::CoffeeShop(const string& name, Address&& address) : name(""), address(std::move(address))
+CoffeeShop::CoffeeShop(const string& name, Address&& address) : name(""), address(std::move(address)), customers()
 {
 	setName(name);
 
-	this->customers = vector<Customer*>();
-	this->customers.reserve(DEFAULT_ARRAY_SIZE);
+	//this->customers = vector<Customer*>();
+	//this->customers.reserve(DEFAULT_ARRAY_SIZE);
 
 	this->employees = vector<Employee*>();
 	this->employees.reserve(DEFAULT_ARRAY_SIZE);
@@ -47,9 +48,9 @@ CoffeeShop::CoffeeShop(const string& name, Address&& address) : name(""), addres
 }
 
 CoffeeShop::CoffeeShop(CoffeeShop&& other) : name(std::move(other.name)), address(std::move(other.address)),
-											customers(NULL), employees(NULL), shifts(NULL), products(NULL)
+											customers(std::move(other.customers)), employees(NULL), shifts(NULL), products(NULL)
 {
-	customers = std::move(other.customers);
+	//customers = std::move(other.customers);
 	employees = std::move(other.employees);
 	shifts = std::move(other.shifts);
 	products = std::move(other.products);
@@ -70,12 +71,12 @@ CoffeeShop::~CoffeeShop()
 		delete* it_shifts;
 	}
 
-	vector<Customer*>::iterator it_cust = customers.begin();
+	/*vector<Customer*>::iterator it_cust = customers.begin();
 	vector<Customer*>::iterator end_cust = customers.end();
 	for (; it_cust != end_cust; ++it_cust)
 	{
 		delete* it_cust;
-	}
+	}*/
 
 	vector<Employee*>::iterator it_empl = employees.begin();
 	vector<Employee*>::iterator end_empl = employees.end();
@@ -125,27 +126,21 @@ bool  CoffeeShop::addNewProduct(const Product& product)
 {
 	if (isProductExists(product))
 		return false;
-	
+
 	products.push_back(product.clone());			//	copy product
 	return true;
 }
 
 bool  CoffeeShop::addNewCustomer(const Customer& customer)
 {
-	if (isCustomerExists(customer))
-		return false;
-	
-	customers.push_back(new Customer(customer));		//	copy customer
-	return true;
+	//customers.push_back(new Customer(customer));		//	copy customer
+	return customers.add(new Customer(customer));
 }
 
 bool  CoffeeShop::addNewCustomer(Customer&& customer)
 {
-	if (isCustomerExists(customer))
-		return false;
-	
-	customers.push_back(new Customer(std::move(customer)));		//	move customer
-	return true;
+	//customers.push_back(new Customer(std::move(customer)));		//	move customer
+	return customers.add(new Customer(std::move(customer)));
 }
 
 bool  CoffeeShop::openShift(double clubDiscountPercent, const Date& date)
@@ -183,11 +178,11 @@ bool CoffeeShop::isEmployeeExists(const Person& employee) const
 	return false;
 }
 
-bool CoffeeShop::isCustomerExists(const Person& customer) const
+/*bool CoffeeShop::isCustomerExists(const Customer& customer) const
 {
 	//vector<const Customer*>::const_iterator found = find(customers.begin(), customers.end(), customer);
 
-	vector<Customer*>::const_iterator it = customers.begin();
+	/*vector<Customer*>::const_iterator it = customers.begin();
 	vector<Customer*>::const_iterator end = customers.end();
 	for (; it != end; ++it)
 		if (*(*it) == customer)
@@ -195,7 +190,8 @@ bool CoffeeShop::isCustomerExists(const Person& customer) const
 
 	//return (found != customers.end());
 	return false;
-}
+	return customers.isExists(customer);
+}*/
 
 bool CoffeeShop::isProductExists(const Product& product) const
 {
@@ -239,7 +235,8 @@ ostream& operator<<(ostream& os, const CoffeeShop& coffeeShop)
 	cout << endl << "Customers:" << endl;
 	if (coffeeShop.getNumCustomers() == 0)
 		cout << "No customers." << endl;
-	printVector(coffeeShop.getCustomers());
+	//printVector(coffeeShop.getCustomers());
+	cout << coffeeShop.getCustomers() << endl;
 
 	/*vector<const Customer*>::const_iterator it_cust = coffeeShop.getCustomers().begin();
 	vector<const Customer*>::const_iterator end_cust = coffeeShop.getCustomers().end();

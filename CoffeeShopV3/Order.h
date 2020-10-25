@@ -22,7 +22,7 @@ private:
 public:
 	friend class Shift;
 	// ctor
-	Order(const Employee& employee, const Customer& customer);		
+	Order(const Employee& employee, const Customer& customer);
 	// dtor
 	~Order();
 
@@ -32,7 +32,7 @@ public:
 	Order& operator+=(const Product& product);
 
 	// getters
-	int getNumItems() const { return items.size(); }
+	int getNumItems() const { return (int)items.size(); }
 	const vector<Product*> getItems() const { return items; }
 	const Employee& getEmployee() const { return employee; }
 	const Customer& getCustomer() const { return customer; }

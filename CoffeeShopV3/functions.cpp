@@ -56,6 +56,7 @@ void menu(CoffeeShop& shop)
 		cout << "7 - Add new employee to coffee shop" << endl;
 		cout << "8 - Add new customer to coffee shop" << endl;
 		cout << "9 - Shift menu" << endl;
+		cout << "10 - Delete Customer" << endl;
 		cout << "0 - Quit" << endl;
 
 		if (!(cin >> choice))
@@ -74,7 +75,9 @@ void menu(CoffeeShop& shop)
 			break;
 		case 3:
 			// 3. show customers details
-			printVector(shop.getCustomers(), "The customers are:");
+			//printVector(shop.getCustomers(), "The customers are:");
+			cout << "The customers are:" << endl;
+			cout << shop.getCustomers() << endl;
 			break;
 		case 4:
 			// 4. show products details
@@ -99,6 +102,10 @@ void menu(CoffeeShop& shop)
 		case 9:
 			// 9. shift menu
 			shiftMenu(shop);
+			break;
+		case 10:
+			//10. delete customer
+			deleteCustomer(shop);
 			break;
 		case 0:
 			// exit menu
@@ -544,7 +551,9 @@ void makeOrder(CoffeeShop& shop, Shift& shift)
 	theEmployee = shift.getEmployees()[choice - 1];
 
 	cout << "Enter customer making the order" << endl;
-	printVector(shop.getCustomers(), "The customers are:");
+	//printVector(shop.getCustomers(), "The customers are:");
+	cout << "The customers are:" << endl;
+	cout << shop.getCustomers() << endl;
 
 	while (!(cin >> choice) || choice <= 0 || choice > shop.getNumCustomers())
 	{
@@ -722,4 +731,33 @@ void showShiftProfits(const Shift& shift)
 		cout << "There are no orders in this shift." << endl;
 	printVector(orders);
 	cout << "Total profits after discount: " << shift.getShiftProfit() << endl << endl;
+}
+
+void deleteCustomer(CoffeeShop& shop)
+{
+	if (shop.getCustomers().getSize() == 0)
+	{
+		cout << "No Customers yet!" << endl;
+		return;
+	}
+
+	cout << "---------- Choose a customer to remove: ----------" << endl;
+	cout << shop.getCustomers() << endl;
+	cout << "Give a number of customer : ";
+
+	int choose;
+	while (!(cin >> choose) || choose <= 0 || choose > shop.getCustomers().getSize())
+	{
+		cleanBuffer();
+		cout << "Invalid index, please try again. ";
+	}
+
+	Customer* custDelete = shop.getCustomers()[choose - 1];
+	bool deleted = shop.getCustomers().remove(custDelete);
+
+	if (deleted)
+		cout << "Customer deleted successfully!" << endl;
+	else
+		cout << "Customer is not Deleted..." << endl;
+
 }

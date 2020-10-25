@@ -5,7 +5,7 @@ using namespace std;
 #include <iostream>
 #include "Product.h"
 
-class Salad: virtual public Product{
+class Salad : virtual public Product {
 public:
 	enum class eDressingType { VINEGRET, SOY, THOUSAND_ISLAND, enumTypeEnd };
 private:
