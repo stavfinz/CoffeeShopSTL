@@ -167,6 +167,8 @@
     <ClInclude Include="Employee.h" />
     <ClInclude Include="functions.h" />
     <ClInclude Include="IllegalValue.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Node.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Person.h" />
     <ClInclude Include="Product.h" />
