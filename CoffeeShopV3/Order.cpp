@@ -21,8 +21,8 @@ Order::Order(const Order& other) : employee(other.employee), customer(other.cust
 
 Order::~Order()
 {
-	vector<Product*>::const_iterator it = items.begin();
-	vector<Product*>::const_iterator end = items.end();
+	vector<Product*>::iterator it = items.begin();
+	vector<Product*>::iterator end = items.end();
 
 	for (; it != end; ++it)
 	{
