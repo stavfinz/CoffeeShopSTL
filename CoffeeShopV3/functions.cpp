@@ -75,7 +75,6 @@ void menu(CoffeeShop& shop)
 			break;
 		case 3:
 			// 3. show customers details
-			//printVector(shop.getCustomers(), "The customers are:");
 			cout << "The customers are:" << endl;
 			cout << shop.getCustomers() << endl;
 			break;
@@ -551,7 +550,6 @@ void makeOrder(CoffeeShop& shop, Shift& shift)
 	theEmployee = shift.getEmployees()[choice - 1];
 
 	cout << "Enter customer making the order" << endl;
-	//printVector(shop.getCustomers(), "The customers are:");
 	cout << "The customers are:" << endl;
 	cout << shop.getCustomers() << endl;
 
@@ -620,7 +618,6 @@ void makeOrder(CoffeeShop& shop, Shift& shift)
 					cin >> numOfSugar;
 					CookieCoffee* temp = dynamic_cast<CookieCoffee*>(p);
 					temp->setMilk(withMilk);
-					//				temp->addSugar(numOfSugar);
 					*temp += numOfSugar;
 					p = temp;
 				}
@@ -737,13 +734,13 @@ void deleteCustomer(CoffeeShop& shop)
 {
 	if (shop.getCustomers().getSize() == 0)
 	{
-		cout << "No Customers yet!" << endl;
+		cout << "There are no customers yet!" << endl;
 		return;
 	}
 
 	cout << "---------- Choose a customer to remove: ----------" << endl;
 	cout << shop.getCustomers() << endl;
-	cout << "Give a number of customer : ";
+	cout << "Give a number of customer: ";
 
 	int choose;
 	while (!(cin >> choose) || choose <= 0 || choose > shop.getCustomers().getSize())

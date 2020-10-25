@@ -12,14 +12,7 @@ protected:
 public:
 	// ctor
 	Product(const string& name, int calories, double cost, double price) noexcept(false);
-	// copy ctor
-	//Product(const Product& other);
-	// move ctor
-	//Product(Product&& other);
-	// assignment operator
-	//virtual const Product& operator=(const Product& other);
-	// move assignment operator
-	//virtual const Product& operator=(Product&& other);
+
 	// dtor
 	virtual ~Product() = default;
 

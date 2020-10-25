@@ -12,49 +12,6 @@ Product::Product(const string& name, int calories, double cost, double price) : 
 	setPrice(price);
 }
 
-//Product::Product(const Product& other)
-//{
-//	*this = other;
-//}
-
-// move ctor
-//Product::Product(Product&& other)
-//{
-//	*this = std::move(other);
-//}
-
-//const Product& Product::operator=(const Product& other)
-//{
-//	if (this != &other)
-//	{
-//		if (!name)
-//			delete[] name;
-//		name = strdup(other.name);
-//		calories = other.calories;
-//		cost = other.cost;
-//		price = other.price;
-//	}
-//	return *this;
-//}
-
-// move assignment operator
-//const Product& Product::operator=(Product&& other)
-//{
-//	if (this != &other)
-//	{
-//		std::swap(name, other.name);
-//		calories = other.calories;
-//		cost = other.cost;
-//		price = other.price;
-//	}
-//	return *this;
-//}
-
-//Product:: ~Product()
-//{
-//	//delete[] name;
-//}
-
 void Product::setName(const string& name)
 {
 	int nameLen = (int)name.size();				//	save name length because needed in more than one place

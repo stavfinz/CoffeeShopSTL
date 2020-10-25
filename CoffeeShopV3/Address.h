@@ -18,16 +18,6 @@ private:
 public:
 	// ctor
 	Address(const string& city, const string& streetName, int streetNumber) noexcept(false);
-	// copy ctor
-	//Address(const Address& other);
-	// move ctor
-	//Address(Address&& other);
-	// assignment operator
-	//const Address& operator=(const Address& other);
-	// move assignment operator
-	//const Address& operator=(Address&& other);
-	// dtor
-	//~Address();
 
 	// getters
 	const string& getCity() const { return city; }

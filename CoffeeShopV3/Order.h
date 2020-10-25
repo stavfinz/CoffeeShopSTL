@@ -27,7 +27,6 @@ public:
 	~Order();
 
 	// operators
-	//Product& operator[](int index){ return *items[index]; }
 	const Product& operator[](int index) const { return *items[index]; }
 	Order& operator+=(const Product& product);
 

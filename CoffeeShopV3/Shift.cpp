@@ -56,9 +56,6 @@ void Shift::setClubDiscountPercent(double clubDiscountPercent)
 
 bool Shift::isProductExists(const Product& product) const
 {
-	/*vector<const Product*>::const_iterator found = find(dailyMenu.begin(), dailyMenu.end(), product);
-	return (found != dailyMenu.end());*/
-
 	vector<Product*>::const_iterator it = dailyMenu.begin();
 	vector<Product*>::const_iterator end = dailyMenu.end();
 	for (; it != end; ++it)
@@ -70,9 +67,6 @@ bool Shift::isProductExists(const Product& product) const
 
 bool Shift::isEmployeeExists(const Person& employee) const
 {
-	/*vector<const Employee* >::const_iterator found = find(employees.begin(), employees.end(), employee);
-	return (found != employees.end());*/
-
 	vector<const Employee*>::const_iterator it = employees.begin();
 	vector<const Employee*>::const_iterator end = employees.end();
 	for (; it != end; ++it)

@@ -9,14 +9,10 @@ protected:
 	string name;
 	string phoneNumber;
 
-	//Person(const Person& other);
-	//Person(Person&& other);
-
-	//const Person& operator=(const Person& other);
-	//const Person& operator=(Person&& other);
-
 private:
+	// setters
 	void setName(const string& name) noexcept(false);
+	void setPhoneNumber(const string& phoneNumber) noexcept(false);
 
 public:
 	// ctor
@@ -30,10 +26,7 @@ public:
 
 	// getters
 	const string& getName() const { return name; }
-	const string& getPhoneNumber() const { return phoneNumber; }
-
-	// setters
-	void setPhoneNumber(const string& phoneNumber) noexcept(false);
+	const string& getPhoneNumber() const { return phoneNumber; }	
 
 	// functions
 	virtual void toOs(ostream& os) const = 0;

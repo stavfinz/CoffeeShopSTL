@@ -62,16 +62,6 @@ Order& Order::operator+=(const Product& product)
 
 bool Order::addItem(const Product& product)
 {
-	//if (numItems == itemsMaxSize)			//	if the array is full -> double it's size
-	//{
-	//	itemsMaxSize *= 2;
-	//	Product** tempArr = new Product * [itemsMaxSize];
-	//	memcpy(tempArr, items, numItems * sizeof(Product*));
-	//	std::swap(tempArr, items);
-	//	delete[] tempArr;
-	//}
-	//items[numItems++] = product.clone();	//	copy the product into the array
-
 	items.push_back(product.clone());
 	return true;
 }

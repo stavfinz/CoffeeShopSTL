@@ -11,45 +11,6 @@ Person::Person(const string& name, const string& phoneNumber) : name(""), phoneN
 	setPhoneNumber(phoneNumber);
 }
 
-//Person::Person(const Person& other) :name(NULL), phoneNumber(NULL)
-//{
-//	*this = other;
-//}
-
-//Person::Person(Person&& other) : name(NULL), phoneNumber(NULL)
-//{
-//	*this = std::move(other);
-//}
-
-// dtor
-//Person::~Person()
-//{
-//	/*delete[] this->name;
-//	delete[] this->phoneNumber;*/
-//}
-
-//const Person& Person::operator=(const Person& other)
-//{
-//	if (this != &other)
-//	{
-//		delete[] name;
-//		delete[] phoneNumber;
-//		name = strdup(other.name);
-//		phoneNumber = strdup(other.phoneNumber);
-//	}
-//	return *this;
-//}
-
-//const Person& Person::operator=(Person&& other)
-//{
-//	if (this != &other)
-//	{
-//		std::swap(this->name, other.name);
-//		std::swap(this->phoneNumber, other.phoneNumber);
-//	}
-//	return *this;
-//}
-
 // operators
 bool Person::operator==(const Person& other) const
 {

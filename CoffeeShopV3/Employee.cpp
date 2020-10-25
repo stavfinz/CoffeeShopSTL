@@ -13,30 +13,6 @@ Employee::Employee(const string& name, const string& phoneNumber, double shiftSa
 	setShiftSalary(shiftSalary);
 }
 
-//const Employee& Employee::operator=(const Employee& other)
-//{
-//	if (this != &other)
-//	{
-//		delete[] name;
-//		delete[] phoneNumber;
-//		Person::operator=(other);
-//		this->hireDate = other.hireDate;
-//		this->shiftSalary = other.shiftSalary;
-//	}
-//	return *this;
-//}
-
-//const Employee& Employee::operator=(Employee&& other)
-//{
-//	if (this != &other)
-//	{
-//		Person::operator=(std::move(other));
-//		this->hireDate = other.hireDate;
-//		this->shiftSalary = other.shiftSalary;
-//	}
-//	return *this;
-//}
-
 bool Employee::operator<(const Employee& other) const
 {
 	return this->getSeniority() < other.getSeniority();

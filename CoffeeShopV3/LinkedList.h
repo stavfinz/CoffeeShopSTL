@@ -13,17 +13,14 @@ class LinkedList
     int size;
 
 private:
-
+    LinkedList(const LinkedList& other) = delete;
     LinkedList& operator=(const LinkedList& other) = delete;
     LinkedList& operator=(LinkedList&& other) = delete;
-    LinkedList(const LinkedList& other) = delete;
 
 public:
     LinkedList();
     LinkedList(LinkedList&& other);
-
     ~LinkedList();
-
     bool add(T data);       //  adds to the end of the list
     bool remove(T data);
     int getSize() const { return size; }
@@ -37,7 +34,7 @@ public:
         int counter = 1;
         while (ptr != NULL)
         {
-            os << "\t" << counter << ")\t" << *ptr << endl;
+            os << "\t" << counter << ". " << *ptr << endl;
             ++counter;
             ptr = ptr->getNext();
         }
@@ -52,25 +49,6 @@ LinkedList<T>::LinkedList()
     size = 0;
 }
 
-/*template <class T>
-LinkedList<T>::LinkedList(const LinkedList& other)
-{
-    if (other.head == NULL)
-    {
-        this = LinkedList();
-        return;
-    }
-
-    this->head = new Node<T>(other.head);
-    size = 1;
-
-    Node<T>* ptr = other.head->getNext();
-    while (head != NULL)
-    {
-        this->add(ptr->getData());
-        ptr = ptr->getNext();
-    }
-}*/
 template <class T>
 LinkedList<T>::~LinkedList()
 {
@@ -106,7 +84,7 @@ bool LinkedList<T>::add(T data)
         {
             ptr = ptr->getNext();
         }
-        ptr->setNext(new Node<T>(data););
+        ptr->setNext(new Node<T>(data));
     }
     size++;
     return true;

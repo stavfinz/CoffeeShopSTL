@@ -21,7 +21,6 @@ private:
 	Address address;
 
 	LinkedList<Customer*> customers;
-	//vector<Customer*> customers;
 	vector<Employee*> employees;
 	vector<Shift*> shifts;
 	vector<Product*> products;
@@ -51,7 +50,6 @@ public:
 	int getNumShifts() const { return (int)shifts.size(); }
 	int getNumProducts() const { return (int)products.size(); }
 	const Address* getAddress() const { return &address; }
-	//const vector<Customer*> getCustomers() const { return customers; }
 	const LinkedList<Customer*>& getCustomers() const { return customers; }
 	LinkedList<Customer*>& getCustomers() { return customers; }
 	const vector<Employee*> getEmployees() const { return employees; }
@@ -72,7 +70,6 @@ public:
 	friend ostream& operator<<(ostream& os, const CoffeeShop& coffeeShop);
 
 	bool isEmployeeExists(const Person& employee) const;
-	//bool isCustomerExists(const Customer& employee) const;
 	bool isProductExists(const Product& product) const;
 	bool isShiftExists(const Date& date) const;
 };
