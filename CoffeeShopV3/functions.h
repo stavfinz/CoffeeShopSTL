@@ -18,15 +18,8 @@ void shiftMenu(CoffeeShop& shop);
 
 // 1.
 void showCoffeeShop(CoffeeShop& shop);
-// 2.
-void showEmployees(const vector<const Employee*> employess);
-// 3.
-void showCustomers(const vector<const Customer*> customers);
-// 4.
-void showProducts(const vector<const Product*> products);
+
 const Product* chooseProductByType(CoffeeShop& shop, const type_info& productType);
-// 5.
-void showShifts(CoffeeShop& shop);
 // 6.
 void addProductMenu(CoffeeShop& shop);
 bool addProduct(CoffeeShop& shop, const type_info& productType);

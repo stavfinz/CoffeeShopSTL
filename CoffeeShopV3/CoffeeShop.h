@@ -18,10 +18,10 @@ private:
 	string name;
 	Address address;
 
-	vector<const Customer*> customers;
-	vector<const Employee*> employees;
+	vector<Customer*> customers;
+	vector<Employee*> employees;
 	vector<Shift*> shifts;
-	vector<const Product*> products;
+	vector<Product*> products;
 
 public:
 	// ctor
@@ -48,10 +48,10 @@ public:
 	int getNumShifts() const { return shifts.size(); }
 	int getNumProducts() const { return products.size(); }
 	const Address* getAddress() const { return &address; }
-	const vector<const Customer*> getCustomers() const { return customers; }
-	const vector<const Employee*> getEmployees() const { return employees; }
+	const vector<Customer*> getCustomers() const { return customers; }
+	const vector<Employee*> getEmployees() const { return employees; }
 	const vector<Shift*> getShifts() const { return shifts; }
-	const vector<const Product*> getProducts() const { return products; }
+	const vector<Product*> getProducts() const { return products; }
 
 	// setters
 	void setName(const string& name) noexcept(false);

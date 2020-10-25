@@ -11,8 +11,6 @@
 #include "CoffeeShop.h"
 #include "utils.h"
 
-const int STRING_SIZE = 255;
-
 CoffeeShop initCoffeeShop()
 {
 	string name;
@@ -72,19 +70,19 @@ void menu(CoffeeShop& shop)
 			break;
 		case 2:
 			// 2. show employees details
-			showEmployees(shop.getEmployees());
+			printVector(shop.getEmployees(), "The employees are:");
 			break;
 		case 3:
 			// 3. show customers details
-			showCustomers(shop.getCustomers());
+			printVector(shop.getCustomers(), "The customers are:");
 			break;
 		case 4:
 			// 4. show products details
-			showProducts(shop.getProducts());
+			printVector(shop.getProducts(), "The products are:");
 			break;
 		case 5:
 			// 5. show shifts details
-			showShifts(shop);
+			printVector(shop.getShifts(), "The shifts are:");
 			break;
 		case 6:
 			// 6. add new product to coffee shop
@@ -173,7 +171,7 @@ void shiftMenu(CoffeeShop& shop)
 			if (shift->getDailyMenuSize() == 0)
 				cout << "There are no items in the menu." << endl << endl;
 			else
-				showProducts(shift->getDailyMenu());
+				printVector(shift->getDailyMenu());
 			break;
 		case 2:
 			// 2. make order
@@ -226,37 +224,13 @@ void showCoffeeShop(CoffeeShop& shop)
 	cout << "The coffee shop details are:" << endl << shop << endl;
 }
 
-void showEmployees(const vector<const Employee*> employees)
-{
-	cout << "The employees are:" << endl;
-	printVector(employees);
-}
-
-void showCustomers(const vector<const Customer*> customers)
-{
-	cout << "The customers are:" << endl;
-	printVector(customers);
-}
-
-void showProducts(const vector<const Product*> products)
-{
-	cout << "The products are:" << endl;
-	printVector(products);
-}
-
-void showShifts(CoffeeShop& shop)
-{
-	cout << "The shifts of the coffee shop are:" << endl;
-	printVector(shop.getShifts());
-}
-
 const Product* chooseProductByType(CoffeeShop& shop, const type_info& productType)
 {
 	int choice;
-	const vector<const Product*> products = shop.getProducts();
+	const vector<Product*> products = shop.getProducts();
 
-	vector<const Product*>::const_iterator it = products.begin();
-	vector<const Product*>::const_iterator end = products.end();
+	vector<Product*>::const_iterator it = products.begin();
+	vector<Product*>::const_iterator end = products.end();
 	int i = 1;
 
 	if (products.empty())
@@ -457,7 +431,7 @@ bool addCookieCoffee(CoffeeShop& shop)
 void addEmployee(CoffeeShop& shop)
 {
 	string name;
-	char phoneNumber[STRING_SIZE];
+	string phoneNumber;
 	double shiftSalary;
 	bool check = false;
 
@@ -465,7 +439,7 @@ void addEmployee(CoffeeShop& shop)
 	getline(cin, name);
 
 	cout << "Enter employee's phone number" << endl;
-	cin.getline(phoneNumber, STRING_SIZE);
+	getline(cin, phoneNumber);
 
 	cout << "Enter employee's shift salary" << endl;
 	while (!(cin >> shiftSalary))
@@ -494,7 +468,7 @@ void addEmployee(CoffeeShop& shop)
 void addCustomer(CoffeeShop& shop)
 {
 	string name;
-	char phoneNumber[STRING_SIZE];
+	string phoneNumber;
 	bool clubMember;
 	bool check = false;
 
@@ -502,7 +476,7 @@ void addCustomer(CoffeeShop& shop)
 	getline(cin, name);
 
 	cout << "Enter customer's phone number" << endl;
-	cin.getline(phoneNumber, STRING_SIZE);
+	getline(cin, phoneNumber);
 
 	cout << "Is club member? true=1/false=0" << endl;
 	while (!(cin >> clubMember))
@@ -559,7 +533,8 @@ void makeOrder(CoffeeShop& shop, Shift& shift)
 	}
 
 	cout << "Enter employee to be incharge of the order" << endl;
-	showEmployees(shift.getEmployees());
+	cout << "The employees are:" << endl;
+	printVector(shift.getEmployees());
 
 	while (!(cin >> choice) || choice <= 0 || choice > shift.getNumEmployees())
 	{
@@ -569,7 +544,7 @@ void makeOrder(CoffeeShop& shop, Shift& shift)
 	theEmployee = shift.getEmployees()[choice - 1];
 
 	cout << "Enter customer making the order" << endl;
-	showCustomers(shop.getCustomers());
+	printVector(shop.getCustomers(), "The customers are:");
 
 	while (!(cin >> choice) || choice <= 0 || choice > shop.getNumCustomers())
 	{
@@ -582,7 +557,7 @@ void makeOrder(CoffeeShop& shop, Shift& shift)
 	Order theOrder(*theEmployee, *theCustomer);
 
 	cout << "The daily menu items" << endl;
-	showProducts(shift.getDailyMenu());
+	printVector(shift.getDailyMenu(), "The products are:");
 
 	while (choice != -1)
 	{
@@ -666,7 +641,7 @@ void addEmployeesToShift(CoffeeShop& shop, Shift& shift)
 	int numEmployeesShift = shift.getNumEmployees();
 
 	// show all Employees in the coffeeshop
-	showEmployees(shop.getEmployees());
+	printVector(shop.getEmployees(), "The employees are :");
 
 	// choose employees to add
 	while (choice != -1)
@@ -702,7 +677,7 @@ void addProductToDailyMenu(CoffeeShop& shop, Shift& shift)
 	int choice = 1;
 	int numProductsShift = shift.getDailyMenuSize();
 	// show all products in the coffeeshop
-	showProducts(shop.getProducts());
+	printVector(shop.getProducts(), "The products are:");
 
 	// choose products to add
 	while (choice != -1)
@@ -736,7 +711,7 @@ void addProductToDailyMenu(CoffeeShop& shop, Shift& shift)
 void showShiftProfits(const Shift& shift)
 {
 	double total = 0;
-	const vector<const Order*> orders = shift.getOrders();
+	const vector<Order*> orders = shift.getOrders();
 	const Employee* manager = shift.getShiftManager();
 	if (!manager)
 		cout << "There are no employees in the shift." << endl;

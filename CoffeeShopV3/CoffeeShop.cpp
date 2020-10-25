@@ -16,16 +16,16 @@ CoffeeShop::CoffeeShop(const string& name, const Address& address) : name(""), a
 {
 	setName(name);
 
-	this->customers = vector<const Customer*>();
+	this->customers = vector<Customer*>();
 	this->customers.reserve(DEFAULT_ARRAY_SIZE);
 
-	this->employees = vector<const Employee*>();
+	this->employees = vector<Employee*>();
 	this->employees.reserve(DEFAULT_ARRAY_SIZE);
 
 	this->shifts = vector<Shift*>();
 	this->shifts.reserve(DEFAULT_ARRAY_SIZE);
 
-	this->products = vector<const Product*>();
+	this->products = vector<Product*>();
 	this->products.reserve(DEFAULT_ARRAY_SIZE);
 }
 
@@ -33,16 +33,16 @@ CoffeeShop::CoffeeShop(const string& name, Address&& address) : name(""), addres
 {
 	setName(name);
 
-	this->customers = vector<const Customer*>();
+	this->customers = vector<Customer*>();
 	this->customers.reserve(DEFAULT_ARRAY_SIZE);
 
-	this->employees = vector<const Employee*>();
+	this->employees = vector<Employee*>();
 	this->employees.reserve(DEFAULT_ARRAY_SIZE);
 
 	this->shifts = vector<Shift*>();
 	this->shifts.reserve(DEFAULT_ARRAY_SIZE);
 
-	this->products = vector<const Product*>();
+	this->products = vector<Product*>();
 	this->products.reserve(DEFAULT_ARRAY_SIZE);
 }
 
@@ -63,29 +63,30 @@ CoffeeShop::CoffeeShop(CoffeeShop&& other) : name(std::move(other.name)), addres
 // dtor
 CoffeeShop::~CoffeeShop()
 {
-	vector<const Customer*>::const_iterator it_cust = customers.begin();
-	vector<const Customer*>::const_iterator end_cust = customers.end();
+	vector<Customer*>::iterator it_cust = customers.begin();
+	vector<Customer*>::iterator end_cust = customers.end();
 	for (; it_cust != end_cust; ++it_cust)
 	{
 		delete* it_cust;
 	}
 
-	vector<const Employee*>::const_iterator it_empl = employees.begin();
-	vector<const Employee*>::const_iterator end_empl = employees.end();
+	vector<Employee*>::iterator it_empl = employees.begin();
+	vector<Employee*>::iterator end_empl = employees.end();
 	for (; it_empl != end_empl; ++it_empl)
 	{
 		delete* it_empl;
 	}
 
-	vector<const Product*>::const_iterator it_prod = products.begin();
-	vector<const Product*>::const_iterator end_prod = products.end();
+	vector<Product*>::iterator it_prod = products.begin();
+	vector<Product*>::iterator end_prod = products.end();
 	for (; it_prod != end_prod; ++it_prod)
 	{
 		delete* it_prod;
+		
 	}
 
-	vector<Shift*>::const_iterator it_shifts = shifts.begin();
-	vector<Shift*>::const_iterator end_shifts = shifts.end();
+	vector<Shift*>::iterator it_shifts = shifts.begin();
+	vector<Shift*>::iterator end_shifts = shifts.end();
 	for (; it_shifts != end_shifts; ++it_shifts)
 	{
 		delete* it_shifts;
@@ -174,8 +175,8 @@ bool CoffeeShop::isEmployeeExists(const Person& employee) const
 {
 	/*vector<const Employee*>::const_iterator found = find(employees.begin(), employees.end(), employee);
 	return (found != employees.end());*/
-	vector<const Employee*>::const_iterator it = employees.begin();
-	vector<const Employee*>::const_iterator end = employees.end();
+	vector<Employee*>::const_iterator it = employees.begin();
+	vector<Employee*>::const_iterator end = employees.end();
 	for (; it != end; ++it)
 		if (*(*it) == employee)
 			return true;
@@ -187,8 +188,8 @@ bool CoffeeShop::isCustomerExists(const Person& customer) const
 {
 	//vector<const Customer*>::const_iterator found = find(customers.begin(), customers.end(), customer);
 
-	vector<const Customer*>::const_iterator it = customers.begin();
-	vector<const Customer*>::const_iterator end = customers.end();
+	vector<Customer*>::const_iterator it = customers.begin();
+	vector<Customer*>::const_iterator end = customers.end();
 	for (; it != end; ++it)
 		if (*(*it) == customer)
 			return true;
@@ -202,8 +203,8 @@ bool CoffeeShop::isProductExists(const Product& product) const
 	/*vector<const Product*>::const_iterator found = find(products.begin(), products.end(), product);
 	return (found != products.end());*/
 
-	vector<const Product*>::const_iterator it = products.begin();
-	vector<const Product*>::const_iterator end = products.end();
+	vector<Product*>::const_iterator it = products.begin();
+	vector<Product*>::const_iterator end = products.end();
 	for (; it != end; ++it)
 		if (*(*it) == product)
 			return true;

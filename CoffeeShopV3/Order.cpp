@@ -10,7 +10,7 @@ const int DEFAULT_ARRAY_SIZE = 20;
 
 Order::Order(const Employee& employee, const Customer& customer) : employee(employee), customer(customer)
 {
-	items = vector<const Product*>();
+	items = vector<Product*>();
 	items.reserve(DEFAULT_ARRAY_SIZE);
 }
 
@@ -21,8 +21,8 @@ Order::Order(const Order& other) : employee(other.employee), customer(other.cust
 
 Order::~Order()
 {
-	vector<const Product*>::const_iterator it = items.begin();
-	vector<const Product*>::const_iterator end = items.end();
+	vector<Product*>::const_iterator it = items.begin();
+	vector<Product*>::const_iterator end = items.end();
 
 	for (; it != end; ++it)
 	{
@@ -34,15 +34,15 @@ const Order& Order::operator=(const Order& other)
 {
 	if (this != &other)
 	{		
-		vector<const Product*>::const_iterator it = items.begin();
-		vector<const Product*>::const_iterator end = items.end();
+		vector<Product*>::const_iterator it = items.begin();
+		vector<Product*>::const_iterator end = items.end();
 
 		for (; it != end; ++it)
 		{
 			delete* it;
 		}
 
-		items = vector<const Product*>();
+		items = vector<Product*>();
 		items.reserve(DEFAULT_ARRAY_SIZE);
 
 		for (int i = 0; i < other.getNumItems(); i++)	//	iterate over the other order array and copy it's items
@@ -80,8 +80,8 @@ int Order::getTotalCalories() const
 {
 	int totalCalories = 0;
 
-	vector<const Product*>::const_iterator it = items.begin();
-	vector<const Product*>::const_iterator end = items.end();
+	vector<Product*>::const_iterator it = items.begin();
+	vector<Product*>::const_iterator end = items.end();
 
 	for (; it != end; ++it)
 		totalCalories +=  (*it)->getCalories();
@@ -93,8 +93,8 @@ double Order::getOrderProfit() const
 {
 	double sumProfit = 0;
 
-	vector<const Product*>::const_iterator it = items.begin();
-	vector<const Product*>::const_iterator end = items.end();
+	vector<Product*>::const_iterator it = items.begin();
+	vector<Product*>::const_iterator end = items.end();
 
 	for (; it != end; ++it)
 		sumProfit += ((*it)->getPrice() - (*it)->getCost());

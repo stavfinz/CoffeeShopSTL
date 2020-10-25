@@ -18,8 +18,8 @@ private:
 	Date shiftDate;
 
 	vector<const Employee*> employees;
-	vector<const Product*> dailyMenu;
-	vector<const Order*> orders;
+	vector<Product*> dailyMenu;
+	vector<Order*> orders;
 	
 public:
 	// ctor
@@ -40,8 +40,8 @@ public:
 	double getClubDiscountPercent() const { return clubDiscountPercent; }
 	const Date* getShiftDate() const { return &shiftDate; }
 	const vector<const Employee*> getEmployees() const { return employees; }
-	const vector<const Product*> getDailyMenu() const { return dailyMenu; }
-	const vector<const Order*> getOrders() const { return orders; }
+	const vector<Product*> getDailyMenu() const { return dailyMenu; }
+	const vector<Order*> getOrders() const { return orders; }
 
 	// setters
 	void setClubDiscountPercent(double clubDiscountPercent) noexcept(false);

@@ -11,7 +11,7 @@ class Customer;
 
 class Order {
 private:
-	vector<const Product*> items;
+	vector<Product*> items;
 
 	const Employee& employee;
 	const Customer& customer;
@@ -33,7 +33,7 @@ public:
 
 	// getters
 	int getNumItems() const { return items.size(); }
-	const vector<const Product*> getItems() const { return items; }
+	const vector<Product*> getItems() const { return items; }
 	const Employee& getEmployee() const { return employee; }
 	const Customer& getCustomer() const { return customer; }
 

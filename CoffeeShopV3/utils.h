@@ -18,8 +18,9 @@ Date getTodayDate();
 Date createDate() noexcept(false);
 
 template <class T>
-void printVector(const vector<T>& vec)
+void printVector(const vector<T>& vec, const string& title = "")
 {
+	cout << title << endl;
 	auto it = vec.begin();
 	auto end = vec.end();
 	int i = 1;

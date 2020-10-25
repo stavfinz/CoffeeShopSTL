@@ -16,28 +16,28 @@ Shift::Shift(double clubDiscountPercent, const Date& shiftDate) :shiftDate(shift
 {
 	setClubDiscountPercent(clubDiscountPercent);
 
-	dailyMenu = vector<const Product*>();
+	dailyMenu = vector<Product*>();
 	dailyMenu.reserve(DEFAULT_ITEMS_SIZE);
 
 	employees = vector<const Employee*>();
 	employees.reserve(DEFUALT_EMPLOYEES_SIZE);
 
-	orders = vector<const Order*>();
+	orders = vector<Order*>();
 	orders.reserve(DEFAULT_ORDERS_SIZE);
 }
 
 Shift::~Shift()
 {
-	vector<const Product*>::const_iterator it_prod = dailyMenu.begin();
-	vector<const Product*>::const_iterator end_prod = dailyMenu.end();
+	vector<Product*>::iterator it_prod = dailyMenu.begin();
+	vector<Product*>::iterator end_prod = dailyMenu.end();
 
 	for (; it_prod != end_prod; ++it_prod)
 	{
 		delete* it_prod;
 	}
 
-	vector<const Order*>::const_iterator it_orders = orders.begin();
-	vector<const Order*>::const_iterator end_orders = orders.end();
+	vector<Order*>::iterator it_orders = orders.begin();
+	vector<Order*>::iterator end_orders = orders.end();
 
 	for (; it_orders != end_orders; ++it_orders)
 	{
@@ -59,8 +59,8 @@ bool Shift::isProductExists(const Product& product) const
 	/*vector<const Product*>::const_iterator found = find(dailyMenu.begin(), dailyMenu.end(), product);
 	return (found != dailyMenu.end());*/
 
-	vector<const Product*>::const_iterator it = dailyMenu.begin();
-	vector<const Product*>::const_iterator end = dailyMenu.end();
+	vector<Product*>::const_iterator it = dailyMenu.begin();
+	vector<Product*>::const_iterator end = dailyMenu.end();
 	for (; it != end; ++it)
 		if (*(*it) == product)
 			return true;
@@ -131,8 +131,8 @@ double Shift::getShiftProfit() const
 	double profitSum = 0;
 	double temp = 0;
 
-	vector<const Order*>::const_iterator it = orders.begin();
-	vector<const Order*>::const_iterator end = orders.end();
+	vector<Order*>::const_iterator it = orders.begin();
+	vector<Order*>::const_iterator end = orders.end();
 
 	for (; it != end; ++it)									//	iterate over the orders 				
 	{
