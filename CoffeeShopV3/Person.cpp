@@ -14,9 +14,7 @@ Person::Person(const string& name, const string& phoneNumber) : name(""), phoneN
 // operators
 bool Person::operator==(const Person& other) const
 {
-	int nameComp = this->name == other.name;					//	compare the names
-	int phoneComp = this->phoneNumber == other.phoneNumber;	//	compare the phone numbers
-	return nameComp == 0 && phoneComp == 0;		//	return true if both equals, false otherwise
+	return (name == other.name) && (phoneNumber == other.phoneNumber);		//	return true if both equals, false otherwise
 }
 
 void Person::setName(const string& name)
