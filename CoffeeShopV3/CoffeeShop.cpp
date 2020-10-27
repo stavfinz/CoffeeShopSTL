@@ -1,5 +1,6 @@
 #pragma warning(disable : 4996)
 
+#include <exception>
 #include "CoffeeShop.h"
 #include "Customer.h"
 #include "Employee.h"
@@ -7,7 +8,6 @@
 #include "Product.h"
 #include "Date.h"
 #include "utils.h"
-#include "IllegalValue.h"
 
 const int DEFAULT_ARRAY_SIZE = 20;
 
@@ -77,9 +77,9 @@ CoffeeShop::~CoffeeShop()
 void CoffeeShop::setName(const string& name)
 {
 	if (name.size() < 2)								//	if name is too short
-		throw IllegalValue("Name is too short.");
+		throw exception("Name is too short.");
 	if (!isAlphaOnly(name))								//	if name contains non-alphabet characters
-		throw IllegalValue("Name should contain characters only.");
+		throw exception("Name should contain characters only.");
 	this->name = name;
 }
 

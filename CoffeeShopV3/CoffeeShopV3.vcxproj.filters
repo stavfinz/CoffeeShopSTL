@@ -92,9 +92,6 @@
     <ClInclude Include="functions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IllegalValue.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Order.h">
       <Filter>Header Files</Filter>
     </ClInclude>
