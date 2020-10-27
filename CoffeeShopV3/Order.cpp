@@ -42,7 +42,6 @@ const Order& Order::operator=(const Order& other)
 			delete* it;
 		}
 
-		items = vector<Product*>();
 		items.reserve(DEFAULT_ARRAY_SIZE);
 
 		for (int i = 0; i < other.getNumItems(); i++)	//	iterate over the other order array and copy it's items
