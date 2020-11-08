@@ -52,9 +52,9 @@ public:
 	const Address* getAddress() const { return &address; }
 	const LinkedList<Customer*>& getCustomers() const { return customers; }
 	LinkedList<Customer*>& getCustomers() { return customers; }
-	const vector<Employee*> getEmployees() const { return employees; }
-	const vector<Shift*> getShifts() const { return shifts; }
-	const vector<Product*> getProducts() const { return products; }
+	const vector<Employee*>& getEmployees() const { return employees; }
+	const vector<Shift*>& getShifts() const { return shifts; }
+	const vector<Product*>& getProducts() const { return products; }
 
 	// setters
 	void setName(const string& name) noexcept(false);

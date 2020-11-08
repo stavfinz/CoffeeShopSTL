@@ -12,31 +12,21 @@
 const int DEFAULT_ARRAY_SIZE = 20;
 
 // ctor
-CoffeeShop::CoffeeShop(const string& name, const Address& address) : name(""), address(address), customers()
+CoffeeShop::CoffeeShop(const string& name, const Address& address) : name(""), address(address), customers(), employees(), products(), shifts()
 {
 	setName(name);
 
-	this->employees = vector<Employee*>();
 	this->employees.reserve(DEFAULT_ARRAY_SIZE);
-
-	this->shifts = vector<Shift*>();
 	this->shifts.reserve(DEFAULT_ARRAY_SIZE);
-
-	this->products = vector<Product*>();
 	this->products.reserve(DEFAULT_ARRAY_SIZE);
 }
 
-CoffeeShop::CoffeeShop(const string& name, Address&& address) : name(""), address(std::move(address)), customers()
+CoffeeShop::CoffeeShop(const string& name, Address&& address) : name(""), address(std::move(address)), customers(), employees(), products(), shifts()
 {
 	setName(name);
 
-	this->employees = vector<Employee*>();
 	this->employees.reserve(DEFAULT_ARRAY_SIZE);
-
-	this->shifts = vector<Shift*>();
 	this->shifts.reserve(DEFAULT_ARRAY_SIZE);
-
-	this->products = vector<Product*>();
 	this->products.reserve(DEFAULT_ARRAY_SIZE);
 }
 
@@ -80,6 +70,7 @@ void CoffeeShop::setName(const string& name)
 		throw exception("Name is too short.");
 	if (!isAlphaOnly(name))								//	if name contains non-alphabet characters
 		throw exception("Name should contain characters only.");
+	
 	this->name = name;
 }
 
